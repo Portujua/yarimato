@@ -1,0 +1,50 @@
+<table-actions button-settings="{ create: true, search: true, filter: false }"
+               on-refresh="$ctrl.load()"
+               on-create="$ctrl.create()"
+               on-search="$ctrl.load(query)"
+               filter-toggle-value="$ctrl.filters"
+               search-toggle-value="$ctrl.showSearch">
+  <!-- Transclude -->
+  <li ui-sref="root.home">
+    <i class="fa fa-fw fa-home"></i> <span class="block">Inicio</span>
+  </li>
+</table-actions>
+
+<div id="jobs-list"
+     class="table-frame"
+     cg-busy="$ctrl.loadingPromise">
+  <div class="table-responsive">
+    <table class="table table-striped"
+           show-filter="$ctrl.filters">
+      <colgroup>
+        <col width="70%">
+        <col width="20%">
+      </colgroup>
+      <tbody>
+        <thead>
+          <th>Nombre</th>
+          <th>Precio</th>
+        </thead>
+        <tr ng-repeat="item in $ctrl.data">
+          <td class="bold text-nowrap text-center">
+            <span editable-text="item.name"
+                  onbeforesave="$ctrl.save($data, item, 'name')"
+                  e-minlength="2"
+                  e-required>
+              {{ item.name }}
+            </span>
+          </td>
+
+          <td class="bold text-nowrap text-center">
+            <span editable-number="item.price"
+                  e-min="0"
+                  e-required
+                  onbeforesave="$ctrl.save($data, item, 'price')">
+              {{ item.price | currency:'Bs.S. ' }}
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

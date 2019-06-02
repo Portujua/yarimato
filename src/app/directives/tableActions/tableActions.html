@@ -1,0 +1,42 @@
+<div class="table-actions-bar">
+  <ul>
+    <li ng-if="_buttonSettings.create && !avoidCreate"
+        ng-click="onCreate()">
+      <i class="fa fa-fw fa-plus"></i> <span class="block">Crear</span>
+    </li>
+    <li ng-if="_buttonSettings.refresh"
+        ng-click="onClickRefresh();onRefresh()">
+      <i class="fa fa-fw fa-refresh"></i> <span class="block">Actualizar</span>
+    </li>
+    <li ng-if="_buttonSettings.filter"
+        ng-click="onClickFilter();onFilter({ value: filterToggleValue })">
+      <i class="fa fa-fw"
+         ng-class="{ 'fa-minus-circle': filterToggleValue, 'fa-filter': !filterToggleValue }"></i> <span class="block">Filtros</span>
+    </li>
+    <li ng-if="_buttonSettings.export"
+        ng-click="onExport()">
+      <i class="fa fa-fw fa-file-excel-o"></i> <span class="block">Export</span>
+    </li>
+    <li ng-if="_buttonSettings.collapse"
+        ng-click="onClickCollapse(list);onCollapse({ value: isAllExpanded })">
+      <i class="fa fa-fw fa-eye"></i> <span class="block">Expand/collapse</span>
+    </li>
+    <li ng-if="_buttonSettings.search"
+        ng-click="onSearchClick()">
+      <i class="fa fa-fw pointer"
+         ng-class="{ 'fa-search': !searchToggleValue, 'fa-times': searchToggleValue }"></i> <span class="block">Buscar</span>
+    </li>
+    <span id="transclude"></span>
+  </ul>
+
+  <div class="actions-bar transparent hug expand"
+       ng-if="searchToggleValue && !useExternalSearch">
+    <input type="text"
+           autofocus
+           class="form-control search-input padding"
+           placeholder="&#xF002; Introduce el texto aquí.."
+           ng-model="searchValue.text"
+           ng-change="onSearch({ query: searchValue.text })"
+           ng-model-options="{ debounce: 400 }">
+  </div>
+</div>

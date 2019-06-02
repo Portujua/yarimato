@@ -1,0 +1,56 @@
+#toast-container .toast {
+  box-shadow: none;
+  border-radius: 0;
+  padding: 15px 15px 15px 70px;
+}
+
+#toast-container .toast:hover {
+  box-shadow: none;
+}
+
+progress-bar {
+  height: 4px;
+  background-color: $brand-primary;
+  opacity: 1;
+}
+
+.toast {
+  background-color: #030303;
+  min-height: 70px;
+}
+
+.toast-success {
+  border-left: solid $brand-success 10px;
+  background-color: #222;
+}
+
+.toast-error {
+  border-left: solid $brand-danger 10px;
+  background-color: #222;
+}
+
+.toast-info {
+  border-left: solid $brand-info 10px;
+  background-color: #222;
+}
+
+.toast-warning {
+  border-left: solid $brand-warning 10px;
+  background-color: #222;
+}
+
+#toast-container .toast.toast-info {
+  background-image: url("../images/robot-blue-inverse.svg") !important;
+}
+
+#toast-container .toast.toast-error {
+  background-image: url("../images/robot-red-inverse.svg") !important;
+}
+
+#toast-container .toast.toast-success {
+  background-image: url("../images/robot-green-inverse.svg") !important;
+}
+
+#toast-container .toast.toast-warning {
+  background-image: url("../images/robot-orange-inverse.svg") !important;
+}

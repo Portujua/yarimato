@@ -1,0 +1,92 @@
+#homeSettings {
+  .panel {
+    border: none;
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+
+    .search-bar {
+      padding: 5px;
+      background-color: $gray-bg;
+      input {
+        border: none;
+        box-shadow: none;
+        background-color: transparent;
+        color: $brand-primary;
+        font-weight: bold;
+      }
+    }
+
+    .panel-heading {
+      background-color: $brand-primary;
+      color: #fff;
+      border-radius: 0;
+      padding: 20px;
+      flex: 1;
+
+      a:active,
+      a:visited,
+      a:hover {
+        color: #ededed;
+      }
+    }
+
+    /**
+    * The dnd-list should always have a min-height,
+    * otherwise you can't drop to it once it's empty
+    */
+    ul[dnd-list] {
+      min-height: 42px;
+      padding-left: 0px;
+      margin: 5px;
+      flex: 9999;
+    }
+
+    /**
+    * The dndDraggingSource class will be applied to
+    * the source element of a drag operation. It makes
+    * sense to hide it to give the user the feeling
+    * that he's actually moving it.
+    */
+    ul[dnd-list] .dndDraggingSource {
+      display: none;
+    }
+
+    /**
+    * An element with .dndPlaceholder class will be
+    * added to the dnd-list while the user is dragging
+    * over it.
+    */
+    ul[dnd-list] .dndPlaceholder {
+      background-color: #ddd;
+      display: block;
+      min-height: 60px;
+    }
+
+    ul[dnd-list] li {
+      background-color: #fff;
+      border: 1px solid #eee;
+      display: block;
+      padding: 15px;
+      margin-bottom: -1px;
+
+      &:first-child {
+        border-top-right-radius: $border-radius-base;
+        border-top-left-radius: $border-radius-base;
+      }
+      &:last-child {
+        border-bottom-right-radius: $border-radius-base;
+        border-bottom-left-radius: $border-radius-base;
+      }
+
+      .tags {
+        margin-top: 5px;
+        .label {
+          margin-right: 2px;
+          margin-top: 2px;
+          font-size: 75%;
+        }
+      }
+    }
+  }
+}

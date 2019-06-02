@@ -1,0 +1,32 @@
+<div class="fraction-input form-group"
+     ng-class="{ 'has-error': !isValid }">
+  <div ng-class="{ 'input-group': allowNewEntries && entry && !entry.id }">
+    <div class="row no-gutters">
+      <div class="col left">
+        <input ng-model="decimal"
+               class="form-control"
+               type="number"
+               step="any"
+               id="decimal"
+               placeholder="Decimal"
+               ng-focus="decimalFocused()"
+               ng-required="required"
+               ng-readonly="decimalDisabled"
+               ng-change="decimalChanged();change()">
+      </div>
+      <div class="col right">
+        <input ng-model="fraction"
+               class="form-control"
+               type="text"
+               id="fraction"
+               placeholder="Fraction"
+               ng-focus="fractionFocused()"
+               ng-required="required"
+               ng-readonly="fractionDisabled"
+               ng-change="fractionChanged();change()">
+      </div>
+    </div>
+
+
+
+  </div>

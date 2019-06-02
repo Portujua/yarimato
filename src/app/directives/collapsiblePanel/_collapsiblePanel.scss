@@ -1,0 +1,96 @@
+// Regular collapsa button
+.collapsible-row {
+  $collapsible-btn-width: 10px;
+
+  > .btn-collapsible {
+    flex: 0 0 $collapsible-btn-width;
+    max-width: $collapsible-btn-width;
+    padding: 10px 0 0 !important;
+  }
+
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    @include media-breakpoint-up($breakpoint, $grid-breakpoints) {
+      @for $i from 1 through $grid-columns {
+        > .col#{$infix}-#{$i} {
+          $w: $collapsible-btn-width / ($grid-columns / $i);
+          $p: percentage($i / $grid-columns);
+          flex: 0 0 calc(#{$p} - #{$w});
+          max-width: calc(#{$p} - #{$w});
+        }
+      }
+    }
+  }
+}
+
+// New layout styles
+.dashboard.compact-layout {
+  height: calc(100vh - #{$tabs-height} - #{$footer-height});
+
+  > .margin,
+  > .margin-xs,
+  > .margin-sm,
+  > .margin-lg,
+  > .margin-xl, {
+    margin: 0 !important;
+    height: 100% !important;
+  }
+
+  .collapsible-row {
+    $collapsible-btn-width: 17px;
+
+    > .btn-collapsible {
+      flex: 0 0 $collapsible-btn-width;
+      max-width: $collapsible-btn-width;
+      padding: 10px 0 0 !important;
+      background-color: #fff;
+      border-right: solid 1px $gray-lighter;
+      color: $text-color;
+
+      &:hover {
+        background-color: $gray-bg;
+      }
+    }
+
+    @each $breakpoint in map-keys($grid-breakpoints) {
+      $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+      @include media-breakpoint-up($breakpoint, $grid-breakpoints) {
+        @for $i from 1 through $grid-columns {
+          > .col#{$infix}-#{$i} {
+            $w: $collapsible-btn-width / ($grid-columns / $i);
+            $p: percentage($i / $grid-columns);
+            flex: 0 0 calc(#{$p} - #{$w});
+            max-width: calc(#{$p} - #{$w});
+          }
+        }
+      }
+    }
+  }
+
+  .row {
+    height: 100%;
+
+    .info-panel {
+      background-color: #fff;
+      border-right: solid 1px $gray-lighter;
+      overflow-y: auto;
+      // overflow-x: hidden;
+
+      > .panel {
+        border: none;
+        margin-bottom: 0;
+      }
+    }
+
+    .details-panel {
+      background-color: #fff;
+      overflow-y: auto;
+
+      > .frame {
+        border: none;
+        border-radius: 0;
+      }
+    }
+  }
+}

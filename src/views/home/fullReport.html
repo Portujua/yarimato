@@ -1,0 +1,77 @@
+
+<div  class="modallFull ">
+  <div class="pull-right frame">
+    <a href="" class="arrow"  ng-click="$ctrl.cancel()" ><i class="fa fa-compress" aria-hidden="true"></i></a> 
+
+  </div>
+
+  <div class="modal-body  expand" cg-busy="$ctrl.loadingPromise">
+    <div class="border">
+    <!--  <ng-include src="$ctrl.templateName" ></ng-include>-->
+    <div ng-switch="$ctrl.component">
+      <!-- Ves que tipo es, imagino que esa lista te devuelve el tipo de grafico -->
+	      <div ng-switch-when="jobDepthReport">
+	        <job-depth-report on-select="$ctrl.cancel()" pages= " $ctrl.pages" ></job-depth-report>
+	      </div>
+	      <div ng-switch-when="bhaFailuresReport">
+	        <bha-failures-report></bha-failures-report>
+	      </div>
+	       <div ng-switch-when="jobSummary">
+	        <job-summary height = "$ctrl.height" ></job-summary>
+	      </div>
+	      <div ng-switch-when="jobHistoryReport">
+	       <job-history-report height = "$ctrl.height" ></job-history-report>
+	      </div>
+	      <div ng-switch-when="jobLocationReport">
+	        <job-location-report></job-location-report>
+				</div>
+
+				<div ng-switch-when="performanceDepthKpi">
+	        <performance-depth-kpi height = "$ctrl.height"></performance-depth-kp>
+				</div>
+
+				<div ng-switch-when="performanceFootageKpi">
+	        <performance-footage-kpi height = "$ctrl.height" ></performance-footage-kpi>
+				</div>
+
+				<div ng-switch-when="performanceHoursDrillingAndConnectionsKpi">
+	        <performance-hours-drilling-and-connections-kpi height = "$ctrl.height" ></performance-hours-drilling-and-connections-kpip>
+				</div>
+
+				<div ng-switch-when="ropFootageKpi">
+	        <rop-footage-kpi height = "$ctrl.height" ></rop-footage-kpip>
+				</div>
+				<div ng-switch-when="bhaPreformanceKpi">
+	        <bha-preformance-kpi height = "$ctrl.height" ></bha-preformance-kpi>
+				</div>
+
+				<div ng-switch-when="footagePercentageKpi">
+	        <footage-percentage-kpi height = "$ctrl.height"></footage-percentage-kpi>
+				</div>
+				<div ng-switch-when="hoursKpi">
+	        <hours-kpi height = "$ctrl.height"></hours-kpi>
+				</div>
+				<div ng-switch-when="slideRotateKpi">
+	        <slide-rotate-kpi height = "$ctrl.height"></slide-rotate-kpi>
+				</div>
+				<div ng-switch-when="footageKpi">
+	        <footage-kpi height = "$ctrl.height"></footage-kpi>
+				</div>
+				<div ng-switch-when="ropKpi">
+	        <rop-kpi height = "$ctrl.height"></rop-kpi>
+				</div>
+				<div ng-switch-when="wellsAndRunsKpi">
+	        <wells-and-runs-kpi height = "$ctrl.height"></wells-and-runs-kpi>
+				</div>
+				<div ng-switch-when="averageRunsKpi">
+	        <average-runs-kpi height = "$ctrl.height"></average-runs-kpi>
+				</div>
+
+	      <div ng-switch-default>
+	        <rop-report></rop-report>
+	      </div>
+    </div>
+    </div>
+  </div>
+</div>
+ 

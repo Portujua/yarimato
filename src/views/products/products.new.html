@@ -1,0 +1,94 @@
+<form name="form"
+      autocomplete="off">
+  <div class="modal-header">
+    <h3 class="modal-title pull-left pointer"
+        ng-click="$ctrl.switchComposeState()">Crear Producto</h3>
+    <div class="pull-right">
+      <div class="btn-group btn-group-sm">
+        <!-- <button class="btn btn-default btn-xs"
+                type="button"
+                ng-click="$ctrl.switchComposeState()"
+                uib-tooltip="{{ isCollapsed ? 'Maximize' : 'Minimize' }}"
+                tooltip-append-to-body="true">
+          <i class="fa fa-fw"
+             ng-class="{ 'fa-window-maximize': isCollapsed, 'fa-window-minimize': !isCollapsed }"></i>
+        </button> -->
+        <button class="btn btn-default btn-sm"
+                type="button"
+                ng-click="$ctrl.cancel()"
+                ng-disabled="$ctrl.isSaving">
+          <i class="fa fa-fw fa-times"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div uib-collapse="isCollapsed"
+       class="modal-body"
+       cg-busy="{ promise: $ctrl.loadingPromise, message: $ctrl.isSaving ? 'Saving...' : 'Loading...' }">
+    <div class="form-group row has-feedback"
+         ng-class="{ 'has-error': form.name.$invalid && form.name.$touched, 'has-success': form.name.$valid && form.name.$touched }">
+      <label class="col-4 col-form-label"
+             for="textinput">Nombre</label>
+      <div class="col-6">
+        <input type="text"
+               name="name"
+               id="name"
+               class="form-control"
+               ng-model="$ctrl.data.name"
+               required
+               placeholder=""
+               required
+               maxlength="50">
+        <!-- Errors -->
+        <span class="help-block"
+              ng-messages="form.name.$error"
+              role="alert">
+          <span ng-message="required">Este campo es obligatorio.</span>
+          <span ng-message="maxlength">Máxima longitud es 50.</span>
+        </span>
+        <!-- /Errors -->
+      </div>
+    </div>
+
+    <div class="form-group row has feedback"
+         ng-class="{ 'has-error': form.price.$invalid && form.price.$touched, 'has-success': form.price.$valid && form.price.$touched }">
+      <label class="col-4 col-form-label"
+             for="price">Precio</label>
+      <div class="col-6">
+        <input type="number"
+               name="price"
+               id="price"
+               class="form-control"
+               ng-model="$ctrl.data.price"
+               required
+               placeholder=""
+               required
+               min="0">
+        <!-- Errors -->
+        <span class="help-block"
+              ng-messages="form.price.$error"
+              role="alert">
+          <span ng-message="required">Este campo es obligatorio.</span>
+          <span ng-message="minlength, maxlength">El valor mínimo es 0.</span>
+        </span>
+        <!-- /Errors -->
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button class="btn btn-danger btn-link"
+            type="button"
+            ng-click="$ctrl.cancel()"
+            ng-disabled="$ctrl.isSaving">
+      Cancelar
+    </button>
+    <button class="btn btn-default"
+            type="button"
+            ng-click="$ctrl.save()"
+            ng-disabled="form.$invalid || $ctrl.isSaving">
+      <i class="fa fa-fw fa-save"></i>
+      Crear
+    </button>
+  </div>
+</form>

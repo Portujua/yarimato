@@ -1,0 +1,10 @@
+.dropdown-menu {
+  > li > a:hover,
+  > li > a:focus,
+  > li.active > a:hover,
+  > li.active > a:focus,
+  > li.active > a {
+    color: inherit;
+    background-color: $gray-bg;
+  }
+}

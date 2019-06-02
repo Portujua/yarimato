@@ -1,0 +1,21 @@
+#footer {
+  height: $footer-height;
+  background-color: #fff;
+  width: 100%;
+  padding: 0 20px;
+  font-size: 85%;
+  color: $text-muted;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  border-top: solid 1px $gray-lighter;
+}
+
+.push {
+  height: $footer-height;
+}
+
+.wrapper {
+  min-height: 100%;
+  margin-bottom: -$footer-height;
+}

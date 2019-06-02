@@ -1,0 +1,87 @@
+// Colors
+$color-1: #46bfbd;
+$color-2: #D32F2F;
+$color-3: #fdb45c;
+$color-4: #FF6F00;
+$color-5: #2E7D32;
+$color-6: #5E35B1;
+$color-7: #FF4081;
+$color-8: #D500F9;
+$color-9: #8BC34A;
+$color-10: #009688;
+
+$settingup-color: #FF9800;
+$upcoming-color: #009688;
+$active-color: #52a946;
+$finished-color: #D32F2F;
+$canceled-color: #333;
+$batch-color: #777;
+
+// Dashboard
+$dashboard-text-color: #777;
+
+// Footer
+$footer-height: 50px;
+
+// Sidebar
+$sidebar-width: 65px;
+$expanded-sidebar-width: 180px;
+$sidebar-bg: #313942;
+$sidebar-toggle-bg: $brand-primary;
+$sidebar-expand-animation: 0.25s;
+$sidebar-option-padding: 10px;
+
+$sidebar-option-bg: transparent;
+$sidebar-option-color: #9299a2;
+$sidebar-option-bg-hover: #637484;
+$sidebar-option-color-hover: #fff;
+$sidebar-option-bg-active: transparent;
+$sidebar-option-color-active: $brand-primary;
+$sidebar-option-font-weight: normal;
+
+$sidebar-option-border: solid 1px #333;
+
+$sidebar-sub-menu-bg: darken($sidebar-bg, 8%);
+$sidebar-sub-menu-color: #aaa;
+$sidebar-sub-menu-bg-hover: $brand-primary;
+$sidebar-sub-menu-color-hover: #fff;
+$sidebar-sub-menu-bg-active: #333;
+$sidebar-sub-menu-color-active: $brand-warning;
+
+$sidebar-caret-bg: transparent;
+$sidebar-caret-color: #aaa;
+$sidebar-caret-bg-hover: lighten($brand-primary, 10%);
+$sidebar-caret-color-hover: #fff;
+$sidebar-caret-bg-open: darken($sidebar-bg, 8%);
+$sidebar-caret-color-open: #fff;
+
+// Tabs
+$tabs-height: 55px;
+$tabs-bg: #fff;
+$tabs-color: #999;
+$tabs-color-hover: #888;
+$tabs-default-color: $brand-primary;
+
+// Navbar width
+$navbar-width: 45px;
+
+// Comments
+$comments-bg: #e2f8ff;
+
+$finished-color: #D32F2F;
+$canceled-color: #333;
+
+$hours-multiple-color: lighten(#FF6F00, 10%);
+$hours-declined-color: #D32F2F;
+$hours-approved-color: #52a946;
+
+$shipping-orders-standby: $brand-danger;
+$shipping-orders-partially-sent: $brand-warning;
+$shipping-orders-sent: $brand-primary;
+$shipping-orders-partially-completed: #009688;
+$shipping-orders-completed: $brand-success;
+
+// Notifications
+$delivered-notifications-background: #e2f8ff;
+
+// Summary

@@ -1,0 +1,53 @@
+<div id="login" class="wrapper">
+  <div class="container">
+    <div class="row no-gutters align-items-center">
+      <div class="col-12 login">
+        <div class="row no-gutters align-items-center">
+          <div class="col-6 col-md-4 col-lg-6 col-xl-6 hidden-sm-down">
+            <div class="login-left">
+              <div class="login-logo">
+                <!-- <img src="../images/logo-white.png" alt="" class="img"> -->
+              </div>
+              <div class="login-environment">
+                <h2>Office Module</h2>
+              </div>
+              <div class="login-contact">
+                &copy; 2018
+                <a href="http://www.wattoapps.com/" target="_blank"> Rhiino Tech, LLC.</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-8 col-lg-6 col-xl-6">
+            <div class="login-right">
+              <div class="login-form">
+                <p class="text-muted lead">
+                  Please enter your username and password to login.
+                </p>
+
+                <form name="form" role="form">
+                  <input type="text" class="form-control" id="username" name="username" ng-model="$ctrl.credentials.username" required autofocus placeholder="Username"
+                         ng-disabled="$ctrl.isLoading">
+
+                  <input type="password" class="form-control" id="password" name="password" ng-model="$ctrl.credentials.password" required placeholder="Password"
+                         ng-disabled="$ctrl.isLoading">
+
+                  <button type="submit" class="btn btn-primary btn-lg" ng-click="$ctrl.login($ctrl.credentials)" ng-disabled="$ctrl.isLoading || form.$invalid">
+                    <i ng-if="$ctrl.isLoading" class="fa fa-fw fa-spin fa-spinner"></i>
+                    Login
+                    <i class="fa fa-fw fa-long-arrow-right"></i>
+                  </button>
+                </form>
+              </div>
+
+              <div class="login-footer">
+                <a href="" ng-click="$ctrl.recoveryPassword()">Forgot your password?</a>
+                &nbsp; &#8211; &nbsp; Last update: {{ $ctrl.PageService.getAppInfo().date | date:'dd/MMM/yyyy' }} (v{{ $ctrl.PageService.getAppInfo().version |
+                available }})
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

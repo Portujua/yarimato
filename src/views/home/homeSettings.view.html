@@ -1,0 +1,134 @@
+<form name="form" autocomplete="off">
+  <div class="modal-header">
+    <h3 class="modal-title">Dashboard Settings</h3>
+  </div>
+  <div id="homeSettings" class="modal-body expand" cg-busy="{ promise: $ctrl.loadingPromise, message: $ctrl.isSaving ? 'Saving...' : 'Loading...' }">
+    <div class="row no-gutters">
+      <div class="col-6">
+
+        <div class="box bordered-right">
+          <div class="panel panel-default hug">
+            <div class="panel-heading">
+              <h3 class="panel-title">
+                Available
+                <div class="pull-right">
+                  <a href="" ng-click="$ctrl.selectAll(true)">
+                    <i class="fa fa-angle-double-right"></i>
+                  </a>
+                </div>
+              </h3>
+            </div>
+
+            <div class="search-bar">
+              <div class="row no-gutters">
+                <div class="col-10">
+                  <input type="text" class="form-control" name="filter" ng-model="$ctrl.globalAvailable" placeholder="Search..." />
+                </div>
+                <div class="col-2">
+                  <button class="btn btn-link btn-block" ng-if="$ctrl.globalAvailable" ng-click="$ctrl.globalAvailable = ''">
+                    <i class="fa fa-times"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Message -->
+            <div class="alert alert-info borderless radiusless hug small text-center" ng-if="($ctrl.models.lists.available.length - ($ctrl.models.lists.available | filter: $ctrl.globalAvailable).length) == 1">
+              <strong>1</strong> element has been hidden.
+            </div>
+            <!-- Plural -->
+            <div class="alert alert-info borderless radiusless hug small text-center" ng-if="($ctrl.models.lists.available.length - ($ctrl.models.lists.available | filter: $ctrl.globalAvailable).length) > 1">
+              <strong>{{ ($ctrl.models.lists.available.length - ($ctrl.models.lists.available | filter: $ctrl.globalAvailable).length) | number }}</strong> elements have been hidden.
+            </div>
+
+            <ul dnd-list="$ctrl.models.lists.available">
+              <!-- The dnd-draggable directive makes an element draggable and will
+                     transfer the object that was assigned to it. If an element was
+                     dragged away, you have to remove it from the original list
+                     yourself using the dnd-moved attribute -->
+              <li ng-repeat="item in $ctrl.models.lists.available | filter: $ctrl.globalAvailable"  ng-init="idx = $index ; $ctrl.ver(idx)" dnd-draggable="item" 
+              dnd-moved="$ctrl.move(item.title, $ctrl.models.lists.available ); $ctrl.ping()" dnd-effect-allowed="move" dnd-selected="$ctrl.models.selected = item">
+                <h4 class="hug">
+                  <i class="fa fa-fw text-primary {{ item.icon || 'fa-bar-chart' }}"></i> {{ item.title }}
+                </h4>
+                <p ng-if="item.description" class="text-muted hug-bottom margin-xs-top small">{{ item.description }}</p>
+                <div class="tags">
+                  <!-- <i class="fa fa-tags small text-muted"></i> -->
+                  <span ng-if="item.newTags" ng-repeat="tag in item.newTags" class="label label-primary label-outline pointer" ng-click="$ctrl.globalAvailable = tag">
+                    {{ tag }}
+                  </span>
+                </div>
+              </li>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6">
+        <div class="box">
+          <div class="panel panel-default hug">
+            <div class="panel-heading">
+              <h3 class="panel-title">
+                <a href="" ng-click="$ctrl.selectAll(false)">
+                  <i class="fa fa-angle-double-left"></i>
+                </a>
+                <div class="pull-right">
+                  Showing
+                </div>
+              </h3>
+            </div>
+
+            <div class="search-bar">
+              <div class="row no-gutters">
+                <div class="col-10">
+                  <input type="text" class="form-control" name="filter" ng-model="$ctrl.globalShowing" placeholder="Search..." />
+                </div>
+                <div class="col-2">
+                  <button class="btn btn-link btn-block" ng-if="$ctrl.globalShowing" ng-click="$ctrl.globalShowing = ''">
+                    <i class="fa fa-times"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Message -->
+            <div class="alert alert-info borderless radiusless hug small text-center" ng-if="($ctrl.models.lists.showing.length - ($ctrl.models.lists.showing | filter: $ctrl.globalShowing).length) == 1">
+              <strong>1</strong> element has been hidden.
+            </div>
+            <!-- Plural -->
+            <div class="alert alert-info borderless radiusless hug small text-center" ng-if="($ctrl.models.lists.showing.length - ($ctrl.models.lists.showing | filter: $ctrl.globalShowing).length) > 1">
+              <strong>{{ ($ctrl.models.lists.showing.length - ($ctrl.models.lists.showing | filter: $ctrl.globalShowing).length) | number }}</strong> elements have been hidden.
+            </div>
+
+            <ul dnd-list="$ctrl.models.lists.showing">
+              <!-- The dnd-draggable directive makes an element draggable and will
+                     transfer the object that was assigned to it. If an element was
+                     dragged away, you have to remove it from the original list
+                     yourself using the dnd-moved attribute -->
+              <li ng-repeat="item in $ctrl.models.lists.showing | filter: $ctrl.globalShowing" dnd-draggable="item" ng-init="idx = $index" 
+               dnd-moved="$ctrl.move(item.title, $ctrl.models.lists.showing )" dnd-effect-allowed="move" dnd-selected="$ctrl.models.selected = item">
+                <h4 class="hug">
+                  <i class="fa fa-fw text-primary {{ item.icon || 'fa-bar-chart' }}"></i> {{ item.title }}
+                </h4>
+                <p ng-if="item.description" class="text-muted hug-bottom margin-xs-top small">{{ item.description }}</p>
+                <div class="tags">
+                  <!-- <i class="fa fa-tags small text-muted"></i> -->
+                  <span ng-if="item.newTags" ng-repeat="tag in item.newTags" class="label label-primary label-outline pointer" ng-click="$ctrl.globalShowing = tag">
+                    {{ tag }}
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button class="btn btn-danger btn-link" type="button" ng-click="$ctrl.cancel()" ng-disabled="$ctrl.isSaving">Close</button>
+    <button class="btn btn-default" type="button" ng-click="$ctrl.save()" ng-disabled="form.$invalid || $ctrl.isSaving">
+      <i class="fa fa-fw fa-save"></i> Save</button>
+  </div>
+</form>
