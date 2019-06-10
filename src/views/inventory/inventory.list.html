@@ -1,4 +1,4 @@
-<table-actions button-settings="{ create: true, search: true, filter: false }"
+<table-actions button-settings="{ create: false, search: false, filter: false, refresh: false }"
                on-refresh="$ctrl.refresh()"
                on-create="$ctrl.create()"
                on-search="$ctrl.load(query)"
@@ -8,6 +8,11 @@
   <li ng-if="$ctrl.selectedProduct"
       ng-click="$ctrl.selectedProduct = null">
     <i class="fa fa-fw fa-arrow-left"></i> <span class="block">Volver</span>
+  </li>
+
+  <li ng-if="$ctrl.selectedProduct"
+      ng-click="$ctrl.create()">
+    <i class="fa fa-fw fa-plus"></i> <span class="block">Crear</span>
   </li>
 
   <li ui-sref="root.home">

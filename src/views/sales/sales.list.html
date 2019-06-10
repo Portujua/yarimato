@@ -1,0 +1,42 @@
+<table-actions button-settings="{ create: true, search: true, filter: false, search: false }"
+               on-refresh="$ctrl.load()"
+               on-create="$ctrl.create()"
+               on-search="$ctrl.load(query)"
+               filter-toggle-value="$ctrl.filters"
+               search-toggle-value="$ctrl.showSearch">
+  <!-- Transclude -->
+  <li ui-sref="root.home">
+    <i class="fa fa-fw fa-home"></i> <span class="block">Inicio</span>
+  </li>
+</table-actions>
+
+<div id="jobs-list"
+     class="table-frame"
+     cg-busy="$ctrl.loadingPromise">
+  <div class="table-responsive">
+    <table class="table table-striped"
+           show-filter="$ctrl.filters">
+      <colgroup>
+        <col width="70%">
+        <col width="30%">
+      </colgroup>
+      <tbody>
+        <thead>
+          <th>Producto</th>
+          <th>Fecha</th>
+        </thead>
+        <tr ng-repeat="item in $ctrl.data"
+            ng-click="$ctrl.view(item)">
+          <td class="text-nowrap text-center">
+            {{ item.product.name }} ({{ item.amount }}) <br>
+            {{ item.amount * item.unitPrice | currency:'Bs.S. ' }}
+          </td>
+
+          <td class="text-nowrap text-center">
+            {{ item.createdAt | date:'dd/MM/yyyy' }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

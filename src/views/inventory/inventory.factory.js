@@ -1,8 +1,8 @@
 angular.module('app').factory('Inventory', () => {
   class Inventory extends BaseFactory {
-    constructor({ _id = null, product = null, amount = null, createdAt = null, owner = null }) {
+    constructor({ _id = null, product = null, amount = null, createdAt = null, owner = null, price = null }) {
       super({
-        _id, product, amount, createdAt, owner
+        _id, product, amount, createdAt, owner, price
       });
     }
 
@@ -14,7 +14,8 @@ angular.module('app').factory('Inventory', () => {
       return {
         product: this.product._id,
         amount: this.amount,
-        owner: this.owner
+        owner: this.owner,
+        price: this.price
       }
     }
   }

@@ -1,0 +1,115 @@
+<form name="form"
+      autocomplete="off">
+  <div class="modal-header">
+    <h3 class="modal-title pull-left pointer">
+      Venta <small>{{ $ctrl.id }}</small>
+    </h3>
+    <div class="pull-right">
+      <div class="btn-group btn-group-sm">
+        <!-- <button class="btn btn-default btn-xs"
+                type="button"
+                ng-click="$ctrl.switchComposeState()"
+                uib-tooltip="{{ isCollapsed ? 'Maximize' : 'Minimize' }}"
+                tooltip-append-to-body="true">
+          <i class="fa fa-fw"
+             ng-class="{ 'fa-window-maximize': isCollapsed, 'fa-window-minimize': !isCollapsed }"></i>
+        </button> -->
+        <button class="btn btn-default btn-sm"
+                type="button"
+                ng-click="$ctrl.cancel()"
+                ng-disabled="$ctrl.isSaving">
+          <i class="fa fa-fw fa-times"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="modal-body"
+       cg-busy="{ promise: $ctrl.loadingPromise, message: $ctrl.isSaving ? 'Saving...' : 'Loading...' }">
+    <table class="table table-striped">
+      <colgroup>
+        <col width="50%">
+        <col width="50%">
+      </colgroup>
+      <tbody>
+        <tr>
+          <td class="bold text-right">Producto</td>
+          <td>{{ $ctrl.data.product.name }}</td>
+        </tr>
+
+        <tr>
+          <td class="bold text-right">Cantidad</td>
+          <td>
+            {{ $ctrl.data.amount }}
+          </td>
+        </tr>
+
+        <tr>
+          <td class="bold text-right">Precio unitario</td>
+          <td>{{ $ctrl.data.unitPrice | currency:'Bs.S. ' }}</td>
+        </tr>
+
+        <tr>
+          <td class="bold text-right">Total</td>
+          <td>{{ $ctrl.data.amount * $ctrl.data.unitPrice | currency:'Bs.S. ' }}</td>
+        </tr>
+
+        <tr class="bg-success-light">
+          <td class="bold text-right">Ganancia</td>
+          <td>{{ $ctrl.data.profit | currency:'Bs.S. ' }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <hr>
+
+    <p class="text-center bold">Inventario usado</p>
+    <table class="table table-striped">
+      <thead>
+        <th>Dueño</th>
+        <th>Cantidad</th>
+        <th>
+          Costo de compra <br>
+          (unitario)
+        </th>
+      </thead>
+      <tbody>
+        <tr ng-repeat="item in $ctrl.data.inventoriesUsed">
+          <td class="text-center">
+            {{ item.inventory.owner.name }}
+          </td>
+
+          <td class="text-center">
+            {{ item.amount }}
+          </td>
+
+          <td class="text-center">
+            {{ item.inventory.price | currency:'Bs.S. ' }}
+          </td>
+        </tr>
+
+        <tr>
+          <td colspan="3"
+              class="bold text-right">
+            Total: {{ $ctrl.data.totalInventoryPrice | currency:'Bs.S. ' }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="modal-footer">
+    <button class="btn btn-default btn-link"
+            type="button"
+            ng-click="$ctrl.cancel()"
+            ng-disabled="$ctrl.isSaving">
+      Cerrar
+    </button>
+    <!-- <button class="btn btn-default"
+            type="button"
+            ng-click="$ctrl.save()"
+            ng-disabled="form.$invalid || $ctrl.isSaving">
+      <i class="fa fa-fw fa-save"></i>
+      Crear
+    </button> -->
+  </div>
+</form>

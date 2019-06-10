@@ -20,7 +20,7 @@ angular.module('app')
      * The environment to be used. Options: testing|distribution
      * @type {String}
      */
-    _environment: 'production',
+    _environment: 'lan',
 
     /**
      * Testing and distribution configuration
@@ -29,9 +29,25 @@ angular.module('app')
      */
     production: {
       version: '',
+      port: '8080',
+      protocol: 'http',
+      host: '18.224.29.29',
+      prefix: ''
+    },
+
+    local: {
+      version: '',
       port: '3000',
       protocol: 'http',
       host: 'localhost',
+      prefix: ''
+    },
+
+    lan: {
+      version: '',
+      port: '3000',
+      protocol: 'http',
+      host: '10.0.0.2',
       prefix: ''
     },
 
