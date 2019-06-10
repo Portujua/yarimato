@@ -31,7 +31,7 @@ angular.module('app')
       version: '',
       port: '8080',
       protocol: 'http',
-      host: '18.218.141.135',
+      host: '52.14.28.194',
       prefix: ''
     },
 
